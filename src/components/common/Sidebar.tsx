@@ -15,6 +15,7 @@ import {
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import PeopleIcon from '@mui/icons-material/People';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import SyncAltIcon from '@mui/icons-material/SyncAlt';
 import { usePathname, useRouter } from 'next/navigation';
 import { useUIStore } from '@/store/uiStore';
 
@@ -29,6 +30,7 @@ const menuItems = [
   { text: 'Dashboard', icon: <DashboardIcon />, path: '/dashboard' },
   { text: 'Users', icon: <PeopleIcon />, path: '/dashboard/users' },
   { text: 'Products', icon: <ShoppingCartIcon />, path: '/dashboard/products' },
+  { text: 'Scroll Demo', icon: <SyncAltIcon />, path: '/scroll-demo' },
 ];
 
 const Sidebar = React.memo(() => {
