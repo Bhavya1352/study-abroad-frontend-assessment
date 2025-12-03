@@ -1,15 +1,7 @@
 'use client';
 
 import React from 'react';
-import {
-  Box,
-  Grid,
-  Card,
-  CardContent,
-  Typography,
-  Avatar,
-  LinearProgress,
-} from '@mui/material';
+import { Box, Card, CardContent, Typography, Avatar, LinearProgress } from '@mui/material';
 import PeopleIcon from '@mui/icons-material/People';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
@@ -63,32 +55,38 @@ export default function DashboardPage() {
 
   return (
     <Box>
-      <Box sx={{ mb: 6 }}>
-        <Typography 
-          variant="h3" 
-          fontWeight="800" 
+      <Box sx={{ mb: 8, textAlign: 'center' }}>
+        <Typography
+          variant="h3"
+          fontWeight="800"
           gutterBottom
           sx={{
             background: 'linear-gradient(135deg, #6366F1 0%, #A855F7 50%, #EC4899 100%)',
             backgroundClip: 'text',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
+            mb: 3,
           }}
         >
           Welcome back, {user?.firstName || 'Admin'}! 👋
         </Typography>
-        <Typography 
-          variant="body1" 
-          color="text.secondary" 
-          sx={{ fontSize: '1.1rem' }}
+        <Typography
+          variant="body1"
+          color="text.secondary"
+          sx={{ fontSize: '1.2rem', maxWidth: 600, mx: 'auto', lineHeight: 1.6 }}
         >
-          Here's your platform performance at a glance
+          Here's your platform performance at a glance. Monitor key metrics and manage your data efficiently.
         </Typography>
+        <Box sx={{ mt: 3, display: 'flex', justifyContent: 'center', gap: 2 }}>
+          <Box sx={{ width: 60, height: 4, bgcolor: 'primary.main', borderRadius: 2 }} />
+          <Box sx={{ width: 30, height: 4, bgcolor: 'secondary.main', borderRadius: 2 }} />
+          <Box sx={{ width: 15, height: 4, bgcolor: 'warning.main', borderRadius: 2 }} />
+        </Box>
       </Box>
 
-      <Grid container spacing={3}>
+      <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)', md: 'repeat(3, 1fr)' }, gap: 3 }}>
         {metrics.map((metric) => (
-          <Grid item xs={12} sm={6} md={4} key={metric.title}>
+          <Box key={metric.title}>
             <Card
               sx={{
                 cursor: metric.link !== '#' ? 'pointer' : 'default',
@@ -184,9 +182,9 @@ export default function DashboardPage() {
                 </Typography>
               </CardContent>
             </Card>
-          </Grid>
+          </Box>
         ))}
-      </Grid>
+      </Box>
 
       <Box sx={{ mt: 6 }}>
         <Card

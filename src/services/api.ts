@@ -22,9 +22,9 @@ class ApiService {
   ): Promise<T> {
     const { token, ...customConfig } = config;
 
-    const headers: HeadersInit = {
+    const headers: Record<string, string> = {
       'Content-Type': 'application/json',
-      ...customConfig.headers,
+      ...(typeof customConfig.headers === 'object' && customConfig.headers ? (customConfig.headers as Record<string, string>) : {}),
     };
 
     if (token) {

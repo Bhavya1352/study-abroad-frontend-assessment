@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Box, Skeleton, Grid, Card, CardContent } from '@mui/material';
+import { Box, Skeleton, Card, CardContent } from '@mui/material';
 
 /**
  * Loading Skeleton Components
@@ -37,9 +37,9 @@ TableSkeleton.displayName = 'TableSkeleton';
 
 // Grid skeleton
 export const GridSkeleton = React.memo(({ count = 6 }: { count?: number }) => (
-  <Grid container spacing={3}>
+  <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)', md: 'repeat(3, 1fr)' }, gap: 3 }}>
     {[...Array(count)].map((_, index) => (
-      <Grid item xs={12} sm={6} md={4} key={index}>
+      <Box key={index}>
         <Card>
           <Skeleton variant="rectangular" height={200} />
           <CardContent>
@@ -51,9 +51,9 @@ export const GridSkeleton = React.memo(({ count = 6 }: { count?: number }) => (
             </Box>
           </CardContent>
         </Card>
-      </Grid>
+      </Box>
     ))}
-  </Grid>
+  </Box>
 ));
 
 GridSkeleton.displayName = 'GridSkeleton';
@@ -62,11 +62,11 @@ GridSkeleton.displayName = 'GridSkeleton';
 export const DetailSkeleton = React.memo(() => (
   <Box>
     <Skeleton variant="text" width="40%" height={40} sx={{ mb: 2 }} />
-    <Grid container spacing={3}>
-      <Grid item xs={12} md={6}>
+    <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' }, gap: 3 }}>
+      <Box>
         <Skeleton variant="rectangular" height={400} />
-      </Grid>
-      <Grid item xs={12} md={6}>
+      </Box>
+      <Box>
         <Skeleton variant="text" width="80%" height={30} />
         <Skeleton variant="text" width="60%" sx={{ mb: 2 }} />
         <Skeleton variant="text" width="100%" />
@@ -75,8 +75,8 @@ export const DetailSkeleton = React.memo(() => (
         <Box sx={{ mt: 3 }}>
           <Skeleton variant="rectangular" width={120} height={40} />
         </Box>
-      </Grid>
-    </Grid>
+      </Box>
+    </Box>
   </Box>
 ));
 

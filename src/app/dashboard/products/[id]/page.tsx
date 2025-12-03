@@ -1,18 +1,8 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import {
-  Box,
-  Typography,
-  Paper,
-  Grid,
-  Button,
-  Chip,
-  Rating,
-  Divider,
-  Alert,
-  IconButton,
-} from '@mui/material';
+import { Box, Typography, Paper, Button, Chip, Rating, Divider, Alert, IconButton } from '@mui/material';
+import Image from 'next/image';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
@@ -37,7 +27,7 @@ interface ProductDetailPageProps {
   params: { id: string };
 }
 
-export default function ProductDetailPage({ params }: ProductDetailPageProps) {
+export default function ProductDetailPage({ params }: any) {
   const router = useRouter();
   const productId = parseInt(params.id);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -106,14 +96,46 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
       <Button
         startIcon={<ArrowBackIcon />}
         onClick={() => router.push('/dashboard/products')}
-        sx={{ mb: 3 }}
+        sx={{
+          mb: 4,
+          borderRadius: 3,
+          px: 3,
+          py: 1.5,
+          fontWeight: 600,
+          textTransform: 'none',
+          boxShadow: '0 4px 12px rgba(6, 182, 212, 0.2)',
+          '&:hover': {
+            transform: 'translateY(-2px)',
+            boxShadow: '0 6px 20px rgba(6, 182, 212, 0.3)',
+          },
+        }}
       >
         Back to Products
       </Button>
 
-      <Grid container spacing={4}>
+      <Box sx={{ mb: 4 }}>
+        <Typography
+          variant="h4"
+          fontWeight="800"
+          gutterBottom
+          sx={{
+            background: 'linear-gradient(135deg, #06B6D4 0%, #10B981 50%, #F59E0B 100%)',
+            backgroundClip: 'text',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            mb: 2,
+          }}
+        >
+          📦 Product Details
+        </Typography>
+        <Typography variant="body1" color="text.secondary" sx={{ fontSize: '1.1rem' }}>
+          Comprehensive information about {currentProduct.title}
+        </Typography>
+      </Box>
+
+      <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr 1fr' }, gap: 4 }}>
         {/* Left Column - Images */}
-        <Grid item xs={12} md={6}>
+        <Box>
           <Paper
             sx={{
               p: 2,
@@ -131,18 +153,15 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
                 bgcolor: 'background.paper',
               }}
             >
-              <Box
-                component="img"
+              <Image
                 src={images[currentImageIndex]}
                 alt={currentProduct.title}
-                sx={{
-                  position: 'absolute',
-                  top: 0,
-                  left: 0,
-                  width: '100%',
-                  height: '100%',
+                fill
+                loading="lazy"
+                style={{
                   objectFit: 'contain',
                 }}
+                sizes="(max-width: 768px) 100vw, 50vw"
               />
 
               {/* Navigation Arrows */}
@@ -208,25 +227,25 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
                       },
                     }}
                   >
-                    <Box
-                      component="img"
+                    <Image
                       src={image}
                       alt={`${currentProduct.title} ${index + 1}`}
-                      sx={{
-                        width: '100%',
-                        height: '100%',
+                      fill
+                      loading="lazy"
+                      style={{
                         objectFit: 'cover',
                       }}
+                      sizes="80px"
                     />
                   </Box>
                 ))}
               </Box>
             )}
           </Paper>
-        </Grid>
+        </Box>
 
         {/* Right Column - Details */}
-        <Grid item xs={12} md={6}>
+        <Box>
           <Paper sx={{ p: 3 }}>
             <Chip
               label={currentProduct.category}
@@ -340,8 +359,8 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
               ))}
             </Paper>
           )}
-        </Grid>
-      </Grid>
+        </Box>
+      </Box>
     </Box>
   );
 }

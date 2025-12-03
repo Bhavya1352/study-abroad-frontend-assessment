@@ -1,17 +1,7 @@
 'use client';
 
 import React, { useEffect, useState, useCallback, useMemo } from 'react';
-import {
-  Box,
-  Typography,
-  Paper,
-  Grid,
-  FormControl,
-  Select,
-  MenuItem,
-  Alert,
-  Chip,
-} from '@mui/material';
+import { Box, Paper, FormControl, Select, MenuItem, Alert, Chip, Typography } from '@mui/material';
 import { useProductStore } from '@/store/productStore';
 import ProductCard from '@/components/products/ProductCard';
 import SearchBar from '@/components/common/SearchBar';
@@ -111,27 +101,40 @@ export default function ProductsPage() {
 
   return (
     <Box>
-      <Typography variant="h4" fontWeight="bold" gutterBottom>
-        Products Management
-      </Typography>
-      <Typography variant="body1" color="text.secondary" sx={{ mb: 3 }}>
-        Browse and manage all products with category filters
-      </Typography>
+      <Box sx={{ mb: 4 }}>
+        <Typography
+          variant="h4"
+          fontWeight="800"
+          gutterBottom
+          sx={{
+            background: 'linear-gradient(135deg, #06B6D4 0%, #10B981 50%, #F59E0B 100%)',
+            backgroundClip: 'text',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            mb: 2,
+          }}
+        >
+          🛍️ Products Management
+        </Typography>
+        <Typography variant="body1" color="text.secondary" sx={{ fontSize: '1.1rem' }}>
+          Browse and manage all products with advanced category filters and search
+        </Typography>
+      </Box>
 
       {/* Search and Filters */}
       <Paper sx={{ p: 2, mb: 3 }}>
-        <Grid container spacing={2} alignItems="center">
-          <Grid item xs={12} md={8}>
+        <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '2fr 1fr' }, gap: 2, mb: 0, alignItems: 'center' }}>
+          <Box>
             <SearchBar
               onSearch={handleSearch}
               placeholder="Search products by name, brand, or category..."
             />
-          </Grid>
-          <Grid item xs={12} md={4}>
+          </Box>
+          <Box>
             <FormControl fullWidth>
               <Select
                 value={selectedCategory}
-                onChange={(e) => handleCategoryChange(e.target.value)}
+                onChange={(e) => handleCategoryChange(e.target.value as string)}
                 displayEmpty
               >
                 <MenuItem value="all">All Categories</MenuItem>
@@ -142,8 +145,8 @@ export default function ProductsPage() {
                 ))}
               </Select>
             </FormControl>
-          </Grid>
-        </Grid>
+          </Box>
+        </Box>
 
         {/* Category Chips */}
         <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1, mt: 2 }}>
@@ -185,13 +188,13 @@ export default function ProductsPage() {
             </Paper>
           ) : (
             <>
-              <Grid container spacing={3}>
+              <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)', md: 'repeat(4, 1fr)', lg: 'repeat(4, 1fr)' }, gap: 3 }}>
                 {products.map((product) => (
-                  <Grid item xs={12} sm={6} md={4} lg={3} key={product.id}>
+                  <Box key={product.id}>
                     <ProductCard product={product} />
-                  </Grid>
+                  </Box>
                 ))}
-              </Grid>
+              </Box>
 
               {/* Pagination */}
               {!searchQuery && total > 0 && (

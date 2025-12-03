@@ -1,17 +1,7 @@
 'use client';
 
 import React, { useEffect } from 'react';
-import {
-  Box,
-  Typography,
-  Paper,
-  Grid,
-  Avatar,
-  Chip,
-  Button,
-  Divider,
-  Alert,
-} from '@mui/material';
+import { Box, Typography, Paper, Avatar, Chip, Button, Divider, Alert } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import EmailIcon from '@mui/icons-material/Email';
 import PhoneIcon from '@mui/icons-material/Phone';
@@ -30,7 +20,7 @@ interface UserDetailPageProps {
   params: { id: string };
 }
 
-export default function UserDetailPage({ params }: UserDetailPageProps) {
+export default function UserDetailPage({ params }: any) {
   const router = useRouter();
   const userId = parseInt(params.id);
 
@@ -80,33 +70,121 @@ export default function UserDetailPage({ params }: UserDetailPageProps) {
       <Button
         startIcon={<ArrowBackIcon />}
         onClick={() => router.push('/dashboard/users')}
-        sx={{ mb: 3 }}
+        sx={{
+          mb: 4,
+          borderRadius: 3,
+          px: 3,
+          py: 1.5,
+          fontWeight: 600,
+          textTransform: 'none',
+          boxShadow: '0 4px 12px rgba(99, 102, 241, 0.2)',
+          '&:hover': {
+            transform: 'translateY(-2px)',
+            boxShadow: '0 6px 20px rgba(99, 102, 241, 0.3)',
+          },
+        }}
       >
         Back to Users
       </Button>
 
-      <Grid container spacing={3}>
+      <Box sx={{ mb: 4 }}>
+        <Typography
+          variant="h4"
+          fontWeight="800"
+          gutterBottom
+          sx={{
+            background: 'linear-gradient(135deg, #6366F1 0%, #A855F7 50%, #EC4899 100%)',
+            backgroundClip: 'text',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            mb: 2,
+          }}
+        >
+          👤 User Profile
+        </Typography>
+        <Typography variant="body1" color="text.secondary" sx={{ fontSize: '1.1rem' }}>
+          Detailed information about {currentUser.firstName} {currentUser.lastName}
+        </Typography>
+      </Box>
+
+      <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '1fr 2fr' }, gap: 4 }}>
         {/* Left Column - Profile */}
-        <Grid item xs={12} md={4}>
-          <Paper sx={{ p: 3, textAlign: 'center' }}>
+        <Box>
+          <Paper
+            sx={{
+              p: 4,
+              textAlign: 'center',
+              borderRadius: 4,
+              background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.95))',
+              backdropFilter: 'blur(10px)',
+              border: '1px solid rgba(255, 255, 255, 0.1)',
+              boxShadow: '0 8px 32px rgba(99, 102, 241, 0.1)',
+              position: 'relative',
+              overflow: 'hidden',
+              '&::before': {
+                content: '""',
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                right: 0,
+                height: '4px',
+                background: 'linear-gradient(90deg, #6366F1, #A855F7, #EC4899)',
+              },
+            }}
+          >
             <Avatar
               src={currentUser.image}
               alt={currentUser.firstName}
-              sx={{ width: 120, height: 120, mx: 'auto', mb: 2 }}
+              sx={{
+                width: 140,
+                height: 140,
+                mx: 'auto',
+                mb: 3,
+                border: '4px solid',
+                borderColor: currentUser.gender === 'male' ? 'primary.main' : 'secondary.main',
+                boxShadow: '0 8px 24px rgba(99, 102, 241, 0.3)',
+                transition: 'all 0.3s ease',
+                '&:hover': {
+                  transform: 'scale(1.05)',
+                  boxShadow: '0 12px 32px rgba(99, 102, 241, 0.4)',
+                },
+              }}
             />
-            <Typography variant="h5" fontWeight="bold" gutterBottom>
+            <Typography variant="h5" fontWeight="800" gutterBottom sx={{ color: 'text.primary' }}>
               {currentUser.firstName} {currentUser.lastName}
             </Typography>
             <Chip
               label={currentUser.gender}
               color={currentUser.gender === 'male' ? 'primary' : 'secondary'}
-              sx={{ mb: 2, textTransform: 'capitalize' }}
+              sx={{
+                mb: 3,
+                textTransform: 'capitalize',
+                fontWeight: 600,
+                fontSize: '0.875rem',
+                height: 32,
+                borderRadius: 2,
+              }}
             />
-            <Typography variant="body2" color="text.secondary" gutterBottom>
-              Age: {currentUser.age} years
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              Blood Group: {currentUser.bloodGroup}
+            <Box sx={{ display: 'flex', justifyContent: 'center', gap: 4, mb: 2 }}>
+              <Box sx={{ textAlign: 'center' }}>
+                <Typography variant="h6" fontWeight="bold" color="primary.main">
+                  {currentUser.age}
+                </Typography>
+                <Typography variant="caption" color="text.secondary">
+                  Age
+                </Typography>
+              </Box>
+              <Box sx={{ textAlign: 'center' }}>
+                <Typography variant="h6" fontWeight="bold" color="secondary.main">
+                  {currentUser.bloodGroup}
+                </Typography>
+                <Typography variant="caption" color="text.secondary">
+                  Blood Group
+                </Typography>
+              </Box>
+            </Box>
+            <Typography variant="body2" color="text.secondary" sx={{ fontStyle: 'italic' }}>
+              User ID: {currentUser.id}
             </Typography>
           </Paper>
 
@@ -125,31 +203,51 @@ export default function UserDetailPage({ params }: UserDetailPageProps) {
               Eye Color: {currentUser.eyeColor}
             </Typography>
           </Paper>
-        </Grid>
+        </Box>
 
         {/* Right Column - Details */}
-        <Grid item xs={12} md={8}>
-          <Paper sx={{ p: 3, mb: 2 }}>
-            <Typography variant="h6" fontWeight="bold" gutterBottom>
-              Contact Information
+        <Box>
+          <Paper
+            sx={{
+              p: 4,
+              mb: 3,
+              borderRadius: 4,
+              background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.95))',
+              backdropFilter: 'blur(10px)',
+              border: '1px solid rgba(255, 255, 255, 0.1)',
+              boxShadow: '0 8px 32px rgba(6, 182, 212, 0.1)',
+            }}
+          >
+            <Typography variant="h6" fontWeight="800" gutterBottom sx={{ color: 'primary.main', mb: 3 }}>
+              📧 Contact Information
             </Typography>
-            <Divider sx={{ mb: 2 }} />
-            <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2 }}>
-              <EmailIcon color="primary" />
+            <Divider sx={{ mb: 3, borderColor: 'rgba(6, 182, 212, 0.2)' }} />
+            <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)' }, gap: 3 }}>
               <Box>
-                <Typography variant="body2" color="text.secondary">
-                  Email
-                </Typography>
-                <Typography variant="body1">{currentUser.email}</Typography>
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 3, p: 2, borderRadius: 2, bgcolor: 'rgba(99, 102, 241, 0.05)' }}>
+                  <Box sx={{ p: 1.5, borderRadius: 2, bgcolor: 'primary.main', color: 'white' }}>
+                    <EmailIcon />
+                  </Box>
+                  <Box>
+                    <Typography variant="body2" color="text.secondary" fontWeight={600}>
+                      Email Address
+                    </Typography>
+                    <Typography variant="body1" fontWeight={500}>{currentUser.email}</Typography>
+                  </Box>
+                </Box>
               </Box>
-            </Box>
-            <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-              <PhoneIcon color="primary" />
               <Box>
-                <Typography variant="body2" color="text.secondary">
-                  Phone
-                </Typography>
-                <Typography variant="body1">{currentUser.phone}</Typography>
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 3, p: 2, borderRadius: 2, bgcolor: 'rgba(6, 182, 212, 0.05)' }}>
+                  <Box sx={{ p: 1.5, borderRadius: 2, bgcolor: 'secondary.main', color: 'white' }}>
+                    <PhoneIcon />
+                  </Box>
+                  <Box>
+                    <Typography variant="body2" color="text.secondary" fontWeight={600}>
+                      Phone Number
+                    </Typography>
+                    <Typography variant="body1" fontWeight={500}>{currentUser.phone}</Typography>
+                  </Box>
+                </Box>
               </Box>
             </Box>
           </Paper>
@@ -192,8 +290,8 @@ export default function UserDetailPage({ params }: UserDetailPageProps) {
               </Box>
             </Box>
           </Paper>
-        </Grid>
-      </Grid>
+        </Box>
+      </Box>
     </Box>
   );
 }
