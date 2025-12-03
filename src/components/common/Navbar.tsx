@@ -60,9 +60,10 @@ const Navbar = React.memo(({ title = 'Dashboard' }: NavbarProps) => {
       position="sticky"
       elevation={0}
       sx={{
-        bgcolor: 'background.paper',
-        borderBottom: 1,
-        borderColor: 'divider',
+        background: 'linear-gradient(90deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85))',
+        backdropFilter: 'blur(20px)',
+        borderBottom: '1px solid rgba(99, 102, 241, 0.1)',
+        color: 'text.primary',
       }}
     >
       <Toolbar>
@@ -70,23 +71,55 @@ const Navbar = React.memo(({ title = 'Dashboard' }: NavbarProps) => {
           edge="start"
           color="inherit"
           onClick={toggleSidebar}
-          sx={{ mr: 2, display: { md: 'none' } }}
+          sx={{ mr: 2, display: { md: 'none' }, color: 'primary.main' }}
         >
           <MenuIcon />
         </IconButton>
 
-        <Typography variant="h6" component="div" sx={{ flexGrow: 1, color: 'text.primary' }}>
+        <Typography 
+          variant="h6" 
+          component="div" 
+          sx={{ 
+            flexGrow: 1, 
+            color: 'text.primary',
+            fontWeight: 700,
+            background: 'linear-gradient(135deg, #6366F1, #A855F7)',
+            backgroundClip: 'text',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+          }}
+        >
           {title}
         </Typography>
 
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
           <DarkModeToggle />
 
-          <IconButton onClick={handleMenuOpen}>
+          <IconButton 
+            onClick={handleMenuOpen}
+            sx={{
+              transition: 'all 0.3s ease',
+              '&:hover': {
+                transform: 'scale(1.1)',
+              },
+            }}
+          >
             {user?.image ? (
-              <Avatar src={user.image} alt={user.firstName} sx={{ width: 32, height: 32 }} />
+              <Avatar 
+                src={user.image} 
+                alt={user.firstName} 
+                sx={{ 
+                  width: 36, 
+                  height: 36,
+                  border: '2px solid #6366F1',
+                  transition: 'all 0.3s ease',
+                  '&:hover': {
+                    boxShadow: '0 0 12px rgba(99, 102, 241, 0.4)',
+                  },
+                }} 
+              />
             ) : (
-              <AccountCircleIcon />
+              <AccountCircleIcon sx={{ color: 'primary.main' }} />
             )}
           </IconButton>
         </Box>
@@ -97,9 +130,16 @@ const Navbar = React.memo(({ title = 'Dashboard' }: NavbarProps) => {
           onClose={handleMenuClose}
           transformOrigin={{ horizontal: 'right', vertical: 'top' }}
           anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+          PaperProps={{
+            sx: {
+              background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85))',
+              backdropFilter: 'blur(10px)',
+              border: '1px solid rgba(99, 102, 241, 0.1)',
+            },
+          }}
         >
           <Box sx={{ px: 2, py: 1 }}>
-            <Typography variant="subtitle2" fontWeight="bold">
+            <Typography variant="subtitle2" fontWeight="700" sx={{ color: 'primary.main' }}>
               {user?.firstName} {user?.lastName}
             </Typography>
             <Typography variant="body2" color="text.secondary">
@@ -107,8 +147,16 @@ const Navbar = React.memo(({ title = 'Dashboard' }: NavbarProps) => {
             </Typography>
           </Box>
           <Divider />
-          <MenuItem onClick={handleLogout}>
-            <LogoutIcon sx={{ mr: 1, fontSize: 20 }} />
+          <MenuItem 
+            onClick={handleLogout}
+            sx={{
+              transition: 'all 0.2s ease',
+              '&:hover': {
+                background: 'linear-gradient(90deg, rgba(99, 102, 241, 0.1), rgba(168, 85, 247, 0.1))',
+              },
+            }}
+          >
+            <LogoutIcon sx={{ mr: 1, fontSize: 20, color: 'error.main' }} />
             Logout
           </MenuItem>
         </Menu>
