@@ -234,7 +234,7 @@ export const lightTheme = createTheme({
       main: '#EF4444',
     },
     background: {
-      default: 'linear-gradient(135deg, #F5F3FF 0%, #F0F9FF 50%, #ECFDF5 100%)',
+      default: '#F9FAFB',
       paper: '#FFFFFF',
     },
     text: {
@@ -280,47 +280,5 @@ export const darkTheme = createTheme({
       secondary: '#CBD5E1',
     },
     divider: 'rgba(255, 255, 255, 0.1)',
-    },
-  },
-});
-
-// Dark Theme with Glassmorphism
-export const darkTheme = createTheme({
-  ...commonTheme,
-  palette: {
-    mode: 'dark',
-    primary: {
-      main: '#8C7CFF',
-      light: '#A79AFF',
-      dark: '#6B5CE3',
-      contrastText: '#ffffff',
-    },
-    secondary: {
-      main: '#A79AFF',
-      light: '#C4B5FF',
-      dark: '#8C7CFF',
-      contrastText: '#ffffff',
-    },
-    background: {
-      default: '#0F172A',
-      paper: 'rgba(30, 41, 59, 0.8)', // Glassmorphic effect
-    },
-    text: {
-      primary: '#F1F5F9',
-      secondary: '#94A3B8',
-    },
-    divider: 'rgba(255, 255, 255, 0.1)',
-    error: {
-      main: '#F87171',
-    },
-    success: {
-      main: '#34D399',
-    },
-    warning: {
-      main: '#FBBF24',
-    },
-    info: {
-      main: '#60A5FA',
-    },
   },
 });
