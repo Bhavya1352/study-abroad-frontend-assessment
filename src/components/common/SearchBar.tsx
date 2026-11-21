@@ -49,19 +49,21 @@ const SearchBar = React.memo(({ onSearch, placeholder = 'Search...', defaultValu
       value={value}
       onChange={handleChange}
       placeholder={placeholder}
-      InputProps={{
-        startAdornment: (
-          <InputAdornment position="start">
-            <SearchIcon color="action" />
-          </InputAdornment>
-        ),
-        endAdornment: value && (
-          <InputAdornment position="end">
-            <IconButton size="small" onClick={handleClear} edge="end">
-              <ClearIcon />
-            </IconButton>
-          </InputAdornment>
-        ),
+      slotProps={{
+        input: {
+          startAdornment: (
+            <InputAdornment position="start">
+              <SearchIcon color="action" />
+            </InputAdornment>
+          ),
+          endAdornment: value && (
+            <InputAdornment position="end">
+              <IconButton size="small" onClick={handleClear} edge="end">
+                <ClearIcon />
+              </IconButton>
+            </InputAdornment>
+          ),
+        },
       }}
       sx={{
         '& .MuiOutlinedInput-root': {

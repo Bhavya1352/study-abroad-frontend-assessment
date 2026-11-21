@@ -116,9 +116,9 @@ export default function ProductDetailPage({ params }: any) {
       <Box sx={{ mb: 4 }}>
         <Typography
           variant="h4"
-          fontWeight="800"
           gutterBottom
           sx={{
+            fontWeight: 800,
             background: 'linear-gradient(135deg, #06B6D4 0%, #10B981 50%, #F59E0B 100%)',
             backgroundClip: 'text',
             WebkitBackgroundClip: 'text',
@@ -252,7 +252,7 @@ export default function ProductDetailPage({ params }: any) {
               sx={{ mb: 2, textTransform: 'capitalize' }}
             />
 
-            <Typography variant="h4" fontWeight="bold" gutterBottom>
+            <Typography variant="h4" gutterBottom sx={{ fontWeight: 'bold' }}>
               {currentProduct.title}
             </Typography>
 
@@ -270,7 +270,7 @@ export default function ProductDetailPage({ params }: any) {
             <Divider sx={{ my: 2 }} />
 
             <Box sx={{ mb: 3 }}>
-              <Typography variant="h3" fontWeight="bold" color="primary.main" gutterBottom>
+              <Typography variant="h3" color="primary.main" gutterBottom sx={{ fontWeight: 'bold' }}>
                 {formatCurrency(currentProduct.price)}
               </Typography>
               {currentProduct.discountPercentage > 0 && (
@@ -282,7 +282,7 @@ export default function ProductDetailPage({ params }: any) {
               )}
             </Box>
 
-            <Typography variant="body1" color="text.secondary" paragraph>
+            <Typography variant="body1" color="text.secondary" sx={{ mb: 2 }}>
               {currentProduct.description}
             </Typography>
 
@@ -337,14 +337,14 @@ export default function ProductDetailPage({ params }: any) {
           {/* Reviews Section */}
           {currentProduct.reviews && currentProduct.reviews.length > 0 && (
             <Paper sx={{ p: 3, mt: 3 }}>
-              <Typography variant="h6" fontWeight="bold" gutterBottom>
+              <Typography variant="h6" gutterBottom sx={{ fontWeight: 'bold' }}>
                 Customer Reviews
               </Typography>
               <Divider sx={{ mb: 2 }} />
               {currentProduct.reviews.slice(0, 3).map((review, index) => (
                 <Box key={index} sx={{ mb: 2 }}>
                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
-                    <Typography variant="subtitle2" fontWeight="bold">
+                    <Typography variant="subtitle2" sx={{ fontWeight: 'bold' }}>
                       {review.reviewerName}
                     </Typography>
                     <Rating value={review.rating} size="small" readOnly />

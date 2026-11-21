@@ -90,9 +90,9 @@ export default function UserDetailPage({ params }: any) {
       <Box sx={{ mb: 4 }}>
         <Typography
           variant="h4"
-          fontWeight="800"
           gutterBottom
           sx={{
+            fontWeight: 800,
             background: 'linear-gradient(135deg, #6366F1 0%, #A855F7 50%, #EC4899 100%)',
             backgroundClip: 'text',
             WebkitBackgroundClip: 'text',
@@ -150,7 +150,7 @@ export default function UserDetailPage({ params }: any) {
                 },
               }}
             />
-            <Typography variant="h5" fontWeight="800" gutterBottom sx={{ color: 'text.primary' }}>
+            <Typography variant="h5" gutterBottom sx={{ fontWeight: 800, color: 'text.primary' }}>
               {currentUser.firstName} {currentUser.lastName}
             </Typography>
             <Chip
@@ -167,7 +167,7 @@ export default function UserDetailPage({ params }: any) {
             />
             <Box sx={{ display: 'flex', justifyContent: 'center', gap: 4, mb: 2 }}>
               <Box sx={{ textAlign: 'center' }}>
-                <Typography variant="h6" fontWeight="bold" color="primary.main">
+                <Typography variant="h6" color="primary.main" sx={{ fontWeight: 'bold' }}>
                   {currentUser.age}
                 </Typography>
                 <Typography variant="caption" color="text.secondary">
@@ -175,7 +175,7 @@ export default function UserDetailPage({ params }: any) {
                 </Typography>
               </Box>
               <Box sx={{ textAlign: 'center' }}>
-                <Typography variant="h6" fontWeight="bold" color="secondary.main">
+                <Typography variant="h6" color="secondary.main" sx={{ fontWeight: 'bold' }}>
                   {currentUser.bloodGroup}
                 </Typography>
                 <Typography variant="caption" color="text.secondary">
@@ -189,7 +189,7 @@ export default function UserDetailPage({ params }: any) {
           </Paper>
 
           <Paper sx={{ p: 3, mt: 2 }}>
-            <Typography variant="h6" fontWeight="bold" gutterBottom>
+            <Typography variant="h6" gutterBottom sx={{ fontWeight: 'bold' }}>
               Physical Info
             </Typography>
             <Divider sx={{ mb: 2 }} />
@@ -218,7 +218,7 @@ export default function UserDetailPage({ params }: any) {
               boxShadow: '0 8px 32px rgba(6, 182, 212, 0.1)',
             }}
           >
-            <Typography variant="h6" fontWeight="800" gutterBottom sx={{ color: 'primary.main', mb: 3 }}>
+            <Typography variant="h6" gutterBottom sx={{ fontWeight: 800, color: 'primary.main', mb: 3 }}>
               📧 Contact Information
             </Typography>
             <Divider sx={{ mb: 3, borderColor: 'rgba(6, 182, 212, 0.2)' }} />
@@ -229,10 +229,10 @@ export default function UserDetailPage({ params }: any) {
                     <EmailIcon />
                   </Box>
                   <Box>
-                    <Typography variant="body2" color="text.secondary" fontWeight={600}>
+                    <Typography variant="body2" color="text.secondary" sx={{ fontWeight: 600 }}>
                       Email Address
                     </Typography>
-                    <Typography variant="body1" fontWeight={500}>{currentUser.email}</Typography>
+                    <Typography variant="body1" sx={{ fontWeight: 500 }}>{currentUser.email}</Typography>
                   </Box>
                 </Box>
               </Box>
@@ -242,10 +242,10 @@ export default function UserDetailPage({ params }: any) {
                     <PhoneIcon />
                   </Box>
                   <Box>
-                    <Typography variant="body2" color="text.secondary" fontWeight={600}>
+                    <Typography variant="body2" color="text.secondary" sx={{ fontWeight: 600 }}>
                       Phone Number
                     </Typography>
-                    <Typography variant="body1" fontWeight={500}>{currentUser.phone}</Typography>
+                    <Typography variant="body1" sx={{ fontWeight: 500 }}>{currentUser.phone}</Typography>
                   </Box>
                 </Box>
               </Box>
@@ -253,14 +253,14 @@ export default function UserDetailPage({ params }: any) {
           </Paper>
 
           <Paper sx={{ p: 3, mb: 2 }}>
-            <Typography variant="h6" fontWeight="bold" gutterBottom>
+            <Typography variant="h6" gutterBottom sx={{ fontWeight: 'bold' }}>
               Company Information
             </Typography>
             <Divider sx={{ mb: 2 }} />
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2 }}>
               <BusinessIcon color="primary" />
               <Box>
-                <Typography variant="body1" fontWeight={600}>
+                <Typography variant="body1" sx={{ fontWeight: 600 }}>
                   {currentUser.company.name}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
@@ -274,7 +274,7 @@ export default function UserDetailPage({ params }: any) {
           </Paper>
 
           <Paper sx={{ p: 3 }}>
-            <Typography variant="h6" fontWeight="bold" gutterBottom>
+            <Typography variant="h6" gutterBottom sx={{ fontWeight: 'bold' }}>
               Address
             </Typography>
             <Divider sx={{ mb: 2 }} />

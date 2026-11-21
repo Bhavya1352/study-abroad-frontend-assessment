@@ -158,9 +158,9 @@ const ProductCard = React.memo(({ product }: ProductCardProps) => {
 
         <Typography
           variant="h6"
-          fontWeight={700}
           gutterBottom
           sx={{
+            fontWeight: 700,
             overflow: 'hidden',
             textOverflow: 'ellipsis',
             display: '-webkit-box',
@@ -187,14 +187,14 @@ const ProductCard = React.memo(({ product }: ProductCardProps) => {
               },
             }}
           />
-          <Typography variant="body2" color="text.secondary" fontWeight={500}>
+          <Typography variant="body2" color="text.secondary" sx={{ fontWeight: 500 }}>
             {product.rating} ({Math.floor(Math.random() * 500) + 50} reviews)
           </Typography>
         </Box>
 
         <Box sx={{ mt: 'auto' }}>
           <Box sx={{ display: 'flex', alignItems: 'baseline', gap: 1, mb: 1 }}>
-            <Typography variant="h5" fontWeight="800" sx={{ color: 'primary.main' }}>
+            <Typography variant="h5" sx={{ fontWeight: 800, color: 'primary.main' }}>
               {formatCurrency(product.price)}
             </Typography>
             {product.discountPercentage > 0 && (
@@ -204,7 +204,7 @@ const ProductCard = React.memo(({ product }: ProductCardProps) => {
             )}
           </Box>
           <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-            <Typography variant="body2" color="text.secondary" fontWeight={500}>
+            <Typography variant="body2" color="text.secondary" sx={{ fontWeight: 500 }}>
               {product.brand}
             </Typography>
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>

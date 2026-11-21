@@ -130,16 +130,18 @@ const Navbar = React.memo(({ title = 'Dashboard' }: NavbarProps) => {
           onClose={handleMenuClose}
           transformOrigin={{ horizontal: 'right', vertical: 'top' }}
           anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
-          PaperProps={{
-            sx: {
-              background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85))',
-              backdropFilter: 'blur(10px)',
-              border: '1px solid rgba(99, 102, 241, 0.1)',
+          slotProps={{
+            paper: {
+              sx: {
+                background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85))',
+                backdropFilter: 'blur(10px)',
+                border: '1px solid rgba(99, 102, 241, 0.1)',
+              },
             },
           }}
         >
           <Box sx={{ px: 2, py: 1 }}>
-            <Typography variant="subtitle2" fontWeight="700" sx={{ color: 'primary.main' }}>
+            <Typography variant="subtitle2" sx={{ fontWeight: 700, color: 'primary.main' }}>
               {user?.firstName} {user?.lastName}
             </Typography>
             <Typography variant="body2" color="text.secondary">

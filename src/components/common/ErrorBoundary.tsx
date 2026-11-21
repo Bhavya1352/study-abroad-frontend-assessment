@@ -68,7 +68,7 @@ class ErrorBoundary extends Component<Props, State> {
             }}
           >
             <ErrorOutlineIcon sx={{ fontSize: 80, color: 'error.main' }} />
-            <Typography variant="h4" fontWeight="bold" color="text.primary">
+            <Typography variant="h4" color="text.primary" sx={{ fontWeight: 'bold' }}>
               Oops! Something went wrong
             </Typography>
             <Typography variant="body1" color="text.secondary">

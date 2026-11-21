@@ -184,7 +184,7 @@ export default function ScrollDemoPage() {
                 description: 'Quick button to scroll back to top smoothly',
               },
             ].map((feature, index) => (
-              <Grid item xs={12} sm={6} md={4} key={index}>
+              <Grid size={{ xs: 12, sm: 6, md: 4 }} key={index}>
                 <Card
                   sx={{
                     height: '100%',
@@ -274,7 +274,7 @@ export default function ScrollDemoPage() {
             Try scrolling down to load more items, or use the navigation dots on the right (desktop)
             to jump to different sections.
           </Typography>
-          <Stack direction="row" spacing={2} justifyContent="center">
+          <Stack direction="row" spacing={2} sx={{ justifyContent: 'center' }}>
             <Button
               variant="contained"
               onClick={() => scrollToElement('intro')}

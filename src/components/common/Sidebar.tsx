@@ -67,7 +67,7 @@ const Sidebar = React.memo(() => {
           HS
         </Box>
         <Box>
-          <Typography variant="h6" fontWeight="bold" color="text.primary">
+          <Typography variant="h6" color="text.primary" sx={{ fontWeight: 'bold' }}>
             Help Study
           </Typography>
           <Typography variant="caption" color="text.secondary">
@@ -115,8 +115,10 @@ const Sidebar = React.memo(() => {
                 </ListItemIcon>
                 <ListItemText
                   primary={item.text}
-                  primaryTypographyProps={{
-                    fontWeight: isActive ? 600 : 500,
+                  slotProps={{
+                    primary: {
+                      sx: { fontWeight: isActive ? 600 : 500 },
+                    },
                   }}
                 />
               </ListItemButton>

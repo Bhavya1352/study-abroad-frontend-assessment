@@ -58,9 +58,9 @@ export default function DashboardPage() {
       <Box sx={{ mb: 8, textAlign: 'center' }}>
         <Typography
           variant="h3"
-          fontWeight="800"
           gutterBottom
           sx={{
+            fontWeight: 800,
             background: 'linear-gradient(135deg, #6366F1 0%, #A855F7 50%, #EC4899 100%)',
             backgroundClip: 'text',
             WebkitBackgroundClip: 'text',
@@ -137,9 +137,8 @@ export default function DashboardPage() {
                       {metric.title}
                     </Typography>
                     <Typography 
-                      variant="h4" 
-                      fontWeight="800"
-                      sx={{ color: metric.color }}
+                      variant="h4"
+                      sx={{ fontWeight: 800, color: metric.color }}
                     >
                       {metric.value}
                     </Typography>
@@ -196,9 +195,9 @@ export default function DashboardPage() {
         >
           <CardContent>
             <Typography 
-              variant="h5" 
-              fontWeight="800"
+              variant="h5"
               sx={{
+                fontWeight: 800,
                 background: 'linear-gradient(135deg, #6366F1, #A855F7)',
                 backgroundClip: 'text',
                 WebkitBackgroundClip: 'text',
@@ -208,7 +207,7 @@ export default function DashboardPage() {
             >
               ✨ Quick Start Guide
             </Typography>
-            <Typography variant="body2" color="text.secondary" paragraph>
+            <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
               Navigate through the sidebar to manage users and products. Use the search and filter features to find what you need quickly.
             </Typography>
             <Box component="ul" sx={{ pl: 2, m: 0 }}>

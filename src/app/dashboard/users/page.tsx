@@ -68,9 +68,9 @@ export default function UsersPage() {
       <Box sx={{ mb: 4 }}>
         <Typography
           variant="h4"
-          fontWeight="800"
           gutterBottom
           sx={{
+            fontWeight: 800,
             background: 'linear-gradient(135deg, #6366F1 0%, #A855F7 50%, #EC4899 100%)',
             backgroundClip: 'text',
             WebkitBackgroundClip: 'text',

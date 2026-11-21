@@ -104,9 +104,9 @@ export default function ProductsPage() {
       <Box sx={{ mb: 4 }}>
         <Typography
           variant="h4"
-          fontWeight="800"
           gutterBottom
           sx={{
+            fontWeight: 800,
             background: 'linear-gradient(135deg, #06B6D4 0%, #10B981 50%, #F59E0B 100%)',
             backgroundClip: 'text',
             WebkitBackgroundClip: 'text',

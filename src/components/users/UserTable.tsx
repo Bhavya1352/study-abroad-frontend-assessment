@@ -75,7 +75,7 @@ const UserTable = React.memo(({ users }: UserTableProps) => {
             <TableRow>
               <TableCell colSpan={6} align="center">
                 <Box sx={{ py: 6, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 2 }}>
-                  <Typography variant="h6" color="text.secondary" fontWeight={500}>
+                  <Typography variant="h6" color="text.secondary" sx={{ fontWeight: 500 }}>
                     No users found
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
@@ -124,7 +124,7 @@ const UserTable = React.memo(({ users }: UserTableProps) => {
                       {user.firstName[0]}
                     </Avatar>
                     <Box>
-                      <Typography variant="body1" fontWeight={700} color="text.primary">
+                      <Typography variant="body1" color="text.primary" sx={{ fontWeight: 700 }}>
                         {user.firstName} {user.lastName}
                       </Typography>
                       <Typography variant="caption" color="text.secondary" sx={{ fontSize: '0.75rem' }}>
@@ -134,12 +134,12 @@ const UserTable = React.memo(({ users }: UserTableProps) => {
                   </Box>
                 </TableCell>
                 <TableCell>
-                  <Typography variant="body2" fontWeight={500} color="text.primary">
+                  <Typography variant="body2" color="text.primary" sx={{ fontWeight: 500 }}>
                     {user.email}
                   </Typography>
                 </TableCell>
                 <TableCell>
-                  <Typography variant="body2" fontWeight={500} color="text.primary">
+                  <Typography variant="body2" color="text.primary" sx={{ fontWeight: 500 }}>
                     {user.phone}
                   </Typography>
                 </TableCell>
@@ -159,7 +159,7 @@ const UserTable = React.memo(({ users }: UserTableProps) => {
                   />
                 </TableCell>
                 <TableCell>
-                  <Typography variant="body2" fontWeight={600} color="text.primary">
+                  <Typography variant="body2" color="text.primary" sx={{ fontWeight: 600 }}>
                     {user.company.name}
                   </Typography>
                   <Typography variant="caption" color="text.secondary" sx={{ fontSize: '0.7rem' }}>
